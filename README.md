@@ -2,29 +2,74 @@
 
 > A Vue.js project
 
-## Build Setup
-
+## 项目运行（nodejs 6.0+）
 ``` bash
-# install dependencies
+# 克隆到本地
+git clone https://github.com/wanghaizhou/hellovue.git
+
+# 进入文件夹
+cd my-project3
+
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开启本地服务器localhost:8080
 npm run dev
 
-# build for production with minification
+# 发布环境
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 
-# run unit tests
-npm run unit
 
-# run e2e tests
-npm run e2e
+# 说明
 
-# run all tests
-npm test
+>  非常简单的一个vue2 + vuex +Vue Router的简单项目，适合作为入门练习。
+
+>  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
+
+>  改程序为helloword级别的vue入门项目,模仿自大牛bailicangdu的入门项目 https://github.com/bailicangdu/vue2-happyfri/
+
+
+
+## 路由配置
+```js
+import App from '../App'
+
+export default [{
+    path: '/',
+    component: App,
+    children: [{
+        path: '',
+        component: r => require.ensure([], () => r(require('../page/home')), 'home')
+    }, {
+        path: '/item',
+        component: r => require.ensure([], () => r(require('../page/item')), 'item')
+    }, {
+        path: '/score',
+        component: r => require.ensure([], () => r(require('../page/score')), 'score')
+    }]
+}]
+
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+## 配置actions
+```js
+import ajax from '../config/ajax'
+
+export default {
+	addNum({ commit, state }, id) {
+		//点击下一题，记录答案id，判断是否是最后一题，如果不是则跳转下一题
+		commit('REMBER_ANSWER', id);
+		if (state.itemNum < state.itemDetail.length) {
+			commit('ADD_ITEMNUM', 1);
+		}
+	},
+	//初始化信息
+	initializeData({ commit }) {
+		commit('INITIALIZE_DATA');
+	}
+}
+
+```

@@ -1,4 +1,4 @@
-# my-project3
+# hellovue
 
 > A Vue.js project
 
@@ -8,7 +8,7 @@
 git clone https://github.com/wanghaizhou/hellovue.git
 
 # 进入文件夹
-cd my-project3
+cd hellovue
 
 # 安装依赖
 npm install
@@ -27,7 +27,7 @@ npm run build
 
 >  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 
->  改程序为helloword级别的vue入门项目,模仿自大牛bailicangdu的入门项目 https://github.com/bailicangdu/vue2-happyfri/
+>  该程序为helloword级别的vue入门项目,模仿自大牛bailicangdu的入门项目 https://github.com/bailicangdu/vue2-happyfri/
 
 
 

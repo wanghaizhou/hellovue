@@ -6,7 +6,11 @@
         一共{{questionnum}}道题目，你答对了{{rightNum}}道
         {{info}}
 
-         <router-link to="/">继续答题</router-link>
+        <!-- <router-link to="/">继续答题</router-link> -->
+
+        <a href="#" @click="restartact">继续答题</a>
+
+
     </div>
     <div class = 'info' v-bind:style="{ display: errorinfo!=null?'true':'none'}">
         异常！！！{{errorinfo}}
@@ -15,7 +19,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
     name:'score',
@@ -26,6 +30,8 @@ export default {
         ...mapState(['selecttype','questions','answerlog',]),
     },
     methods:{
+
+        ...mapMutations(['restart']),
 
         initsocre(){
             this.errorinfo=null
@@ -57,6 +63,12 @@ export default {
                 this.info='你是最厉害的'
             }
         },
+        restartact(){
+            console.log('重新开始答题')
+            this.restart()
+            this.$router.push('/')
+        },
+        
     },
     created(){
         this.initsocre()

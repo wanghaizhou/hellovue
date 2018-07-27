@@ -26,5 +26,11 @@ export default new Vuex.Store({
         chooseanswer (state,index){
             state.answerlog.push(index)
         },
+        restart(){
+            state.answerlog=[]
+            state.selecttype=0
+            state.score=0
+            state.questionindex=0
+        }
     }
 })
